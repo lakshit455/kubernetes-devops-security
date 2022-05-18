@@ -24,8 +24,8 @@ pipeline {
       steps {
         withDockerRegistry([credentialsId: "docker", url: ""]) {
           sh 'printenv'
-          sh 'docker build -t lakshit455/dontgiveup:""$GIT_COMMIT"" .'
-          sh 'docker push lakshit455/dontgiveup:""$GIT_COMMIT""'
+          sh 'docker build -t lakshit45/dontgiveup:""$GIT_COMMIT"" .'
+          sh 'docker push lakshit45/dontgiveup:""$GIT_COMMIT""'
          }
        }
     }
