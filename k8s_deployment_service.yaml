@@ -16,7 +16,7 @@ spec:
         app: devsecops
     spec:
       containers:
-      - image: docker pull siddharth67/numeric-app
+      - image: siddharth67/numeric-app
         name: devsecops-container
 ---
 apiVersion: v1
