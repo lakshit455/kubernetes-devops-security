@@ -16,7 +16,7 @@ spec:
         app: devsecops
     spec:
       containers:
-      - image: nginx
+      - image: lakshit45/dontgiveup 
         name: devsecops-container
 ---
 apiVersion: v1
