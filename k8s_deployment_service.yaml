@@ -30,7 +30,7 @@ spec:
   - port: 8070
     nodePort: 32286
     protocol: TCP
-    targetPort: 80
+    targetPort: 8080
   selector:
     app: devsecops
   type: NodePort
