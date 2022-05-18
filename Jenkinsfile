@@ -20,5 +20,14 @@ pipeline {
         }
       }
     }
+  stage('Docker Build and Push') {
+      steps {
+        withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
+          sh 'printenv'
+          sh 'docker build -t lakshit455/dontgiveup:""$GIT_COMMIT"" .'
+          sh 'docker push lakshit455/dontgiveup:""$GIT_COMMIT""'
+        }
+      }
+    }
   }
 }
