@@ -31,7 +31,7 @@ pipeline {
     }
      stage('SonarQube - SAST') {
       steps {
-        sh "mvn sonar:sonar   -Dsonar.projectKey=project1  -Dsonar.host.url=http://192.168.1.64:9000  -Dsonar.login=2aa6dc441b1117e9b6393490aaa08102f8fa721a "
+        sh "mvn sonar:sonar  -Dsonar.projectKey=admin -Dsonar.host.url=http://20.58.188.143:9000 -Dsonar.login=c9f305f47c79fd69c5537609fc59988d95242b90 "
       }
     }
     stage('Kubernetes Deployment - DEV') {
