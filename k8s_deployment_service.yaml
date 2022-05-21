@@ -16,8 +16,10 @@ spec:
         app: devsecops
     spec:
       containers:
-      - image: lakshit45/dontgiveup:123
+      - image: nginx
         name: devsecops-container
+        securityContext:
+          runasNonRoot: true
 ---
 apiVersion: v1
 kind: Service
