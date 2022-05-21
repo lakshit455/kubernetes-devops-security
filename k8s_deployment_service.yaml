@@ -16,8 +16,11 @@ spec:
         app: devsecops
     spec:
       containers:
-      - image: lakshit45/dontgiveup:12
+      - image:  lakshit45/imagesssshcufhiufu 
         name: devsecops-container
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 100
       
 ---
 apiVersion: v1
