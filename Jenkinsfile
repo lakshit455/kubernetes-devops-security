@@ -32,8 +32,8 @@ pipeline {
       steps {
         withDockerRegistry([credentialsId: "docker", url: ""]) {
           sh 'printenv'
-          sh 'docker build -t lakshit45/dontgiveu .'
-          sh 'docker push lakshit45/dontgiveu '
+          sh 'docker build -t lakshit45/dontgiveup:123 .'
+          sh 'docker push lakshit45/dontgiveup:123 '
          }
        }
     }
