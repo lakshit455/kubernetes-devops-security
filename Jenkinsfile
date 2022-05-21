@@ -54,14 +54,6 @@ pipeline {
       jacoco execPattern: 'target/jacoco.exec'
       dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
     }
-
-    // success {
-
-    // }
-
-    // failure {
-
-    // }
   }
 
 }
