@@ -14,33 +14,7 @@ pipeline {
         sh "mvn test"
       }
     }
-//    stage('SonarQube - SAST') {
-//        steps {
- //        withSonarQubeEnv('SonarQube') {
- //          sh "mvn sonar:sonar \
-  //                       -Dsonar.projectKey=hrtvb \
-  //                       -Dsonar.host.url=http://20.58.188.143:9000  "
- //        }
-  //       timeout(time: 2, unit: 'MINUTES') {
-  //         script {
-  //           waitForQualityGate abortPipeline: true
-  //         }
- //        }
-//       }
- //    }
-    stage('Vulnerability Scan - Docker') {
-      steps {
-        parallel(
-          "Dependency Scan": {
-            sh "mvn dependency-check:check"
-          },
-          "Trivy Scan": {
-            sh "bash trivy.sh"
-          }
-        )
-      }
-    }
-
+    
     stage('Docker Build and Push') {
       steps {
         withDockerRegistry([credentialsId: "docker", url: ""]) {
@@ -50,7 +24,11 @@ pipeline {
          }
        }
     }
-     
+    stage('Vulnerability Scan - Docker ') {
+      steps {
+        sh "mvn dependency-check:check"
+      }
+    }
 
     stage('Kubernetes Deployment - DEV') {
       steps {
