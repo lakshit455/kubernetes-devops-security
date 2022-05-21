@@ -19,7 +19,7 @@ spec:
       - image: nginx
         name: devsecops-container
         securityContext:
-          runasNonRoot: true
+          runAsNonRoot: true
 ---
 apiVersion: v1
 kind: Service
