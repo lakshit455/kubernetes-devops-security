@@ -28,16 +28,7 @@ pipeline {
  //        }
 //       }
  //    }
-    stage('Docker Build and Push') {
-      steps {
-        withDockerRegistry([credentialsId: "docker", url: ""]) {
-          sh 'printenv'
-          sh 'docker build -t lakshit45/dontgiveup:123 .'
-          sh 'docker push lakshit45/dontgiveup:123 '
-         }
-       }
-    }
-     stage('Vulnerability Scan - Docker') {
+    stage('Vulnerability Scan - Docker') {
       steps {
         parallel(
           "Dependency Scan": {
@@ -50,6 +41,16 @@ pipeline {
       }
     }
 
+    stage('Docker Build and Push') {
+      steps {
+        withDockerRegistry([credentialsId: "docker", url: ""]) {
+          sh 'printenv'
+          sh 'docker build -t lakshit45/dontgiveup:123 .'
+          sh 'docker push lakshit45/dontgiveup:123 '
+         }
+       }
+    }
+     
 
     stage('Kubernetes Deployment - DEV') {
       steps {
