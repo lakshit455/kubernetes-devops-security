@@ -16,7 +16,7 @@ spec:
         app: devsecops
     spec:
       containers:
-      - image: nginx
+      - image: lakshit45/dontgiveup:12
         name: devsecops-container
         securityContext:
           runAsNonRoot: true
