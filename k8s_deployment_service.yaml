@@ -16,7 +16,7 @@ spec:
         app: devsecops
     spec:
       containers:
-      - image: lakshit45/dontgiveup:12
+      - image: lakshit45/dontgiveup:123
         name: devsecops-container
 ---
 apiVersion: v1
@@ -24,11 +24,11 @@ kind: Service
 metadata:
   labels:
     app: devsecops
-  name: devsecops-svc
+  name: devsecops-svcc
 spec:
   ports:
-  - port: 8070
-    nodePort: 32286
+  - port: 8071
+    nodePort: 32290
     protocol: TCP
     targetPort: 8080
   selector:
