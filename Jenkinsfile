@@ -19,8 +19,7 @@ pipeline {
         withSonarQubeEnv('SonarQube') {
           sh "mvn sonar:sonar \
                         -Dsonar.projectKey=hrtvb \
-                        -Dsonar.host.url=http://20.58.188.143:9000 \
-                        -Dsonar.login=c363187354366b4a8bd97f0cd9cdadce33ccc576"
+                        -Dsonar.host.url=http://20.58.188.143:9000 \ "
         }
         timeout(time: 2, unit: 'MINUTES') {
           script {
