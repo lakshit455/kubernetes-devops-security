@@ -24,23 +24,33 @@ pipeline {
       steps {
         withDockerRegistry([credentialsId: "docker", url: ""]) {
           sh 'printenv'
-          sh 'docker build -t lakshit45/dontgiveup:12 .'
-          sh 'docker push lakshit45/dontgiveup:12'
+          sh 'docker build -t lakshit45/dontgiveup:123 .'
+          sh 'docker push lakshit45/dontgiveup:123 '
          }
        }
     }
-    stage('SonarQube - SAST') {
+    stage('Vulnerability Scan - Docker ') {
       steps {
-        withSonarQubeEnv('SonarQube') {
-          sh " mvn sonar:sonar  -Dsonar.projectKey=admin -Dsonar.host.url=http://20.58.188.143:9000 -Dsonar.login=c9f305f47c79fd69c5537609fc59988d95242b90 "
-        }
-        timeout(time: 2, unit: 'MINUTES') {
-          script {
-            waitForQualityGate abortPipeline: true
-          }
+        sh "mvn dependency-check:check"
+      }
+      post {
+        always {
+          dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
         }
       }
     }
+ #   stage('SonarQube - SAST') {
+  #    steps {
+   #     withSonarQubeEnv('SonarQube') {
+    #      sh " mvn sonar:sonar  -Dsonar.projectKey=admin -Dsonar.host.url=http://20.58.188.143:9000 -Dsonar.login=c9f305f47c79fd69c5537609fc59988d95242b90 "
+     #   }
+      #  timeout(time: 2, unit: 'MINUTES') {
+       #   script {
+        #    waitForQualityGate abortPipeline: true
+         # }
+       # }
+     # }
+    #}
     stage('Kubernetes Deployment - DEV') {
       steps {
         withKubeConfig([credentialsId: 'kubeconfig']) {
