@@ -15,14 +15,12 @@ spec:
       labels:
         app: devsecops
     spec:
-      serviceAccountName: default
       containers:
-      - image: replace
+      - image:  lakshit45/imagesssshcufhiufu 
         name: devsecops-container
         securityContext:
           runAsNonRoot: true
           runAsUser: 100
-          readOnlyRootFilesystem: true
       
 ---
 apiVersion: v1
