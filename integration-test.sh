@@ -12,7 +12,7 @@ if [[ ! -z "$PORT" ]];
 then
 
     response=$(curl -s  http://20.58.188.143:$PORT$)
-    http_code=$(curl -s -o /dev/null -w "%{http_code}" http://20.58.188.143:$PORT$)
+    http_code=$( curl -s -o /dev/null -w "%{http_code}" http://20.58.188.143:32290)
 
   
 
