@@ -42,6 +42,7 @@ pipeline {
     stage('Vulnerability Scan - Docker') {
       steps {
             sh "bash trivy.sh"
+	    sh "bash kubesec-scan.sh"
           }
      }
     
