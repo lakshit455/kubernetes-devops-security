@@ -4,7 +4,7 @@
 
 sleep 5s
 
-PORT=$(kubectl -n default get svc ${devsecops-svcc } -o json | jq .spec.ports[].nodePort)
+PORT=32290
 
 echo $PORT
 
