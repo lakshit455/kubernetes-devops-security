@@ -41,11 +41,10 @@ pipeline {
 
     stage('Vulnerability Scan - Docker') {
       steps {
-          "Trivy Scan" {
             sh "bash trivy.sh"
           }
-      }
-    }
+     }
+    
 
     stage('Docker Build and Push') {
       steps {
