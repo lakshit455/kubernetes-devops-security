@@ -15,12 +15,14 @@ spec:
       labels:
         app: devsecops
     spec:
+      serviceAccountName: defaul
       containers:
       - image:  lakshit45/imagesssshcufhiufu 
         name: devsecops-container
         securityContext:
           runAsNonRoot: true
           runAsUser: 100
+          readOnlyRootFilesystem: true
       
 ---
 apiVersion: v1
