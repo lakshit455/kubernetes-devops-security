@@ -17,7 +17,7 @@ spec:
     spec:
       serviceAccountName: default
       containers:
-      - image: replace
+      - image: lakshit45/imagesssshcufhiufu
         name: devsecops-container
         securityContext:
           runAsNonRoot: true
